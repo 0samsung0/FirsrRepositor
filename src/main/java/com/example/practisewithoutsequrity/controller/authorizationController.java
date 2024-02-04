@@ -12,7 +12,7 @@ public class authorizationController {
 
     @RequestMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") Long id){
-        return 1;
+
     }
 
 }
