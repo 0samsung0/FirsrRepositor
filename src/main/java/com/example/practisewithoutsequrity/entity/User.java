@@ -45,6 +45,11 @@ public class User {
         Role role = new Role(r);
     }
 
+    public User(String name, String pass){
+        this.name=name;
+        this.password=pass;
+    }
+
     @ManyToOne
     @JoinColumn(name = "role")
     private Role role;

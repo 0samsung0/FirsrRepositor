@@ -5,13 +5,19 @@
 </head>
 <body>
 <h1>Добро пожаловать !</h1>
-<form action="/authorization" method="POST">
+<form action="/register" method="POST" enctype="application/x-www-form-urlencoded">
+
     <label for="username">Логин учетной записи </label>
-    <input type="text" id="username" name="username" required><br>
+    <input type="text" id="username" name="name" required><br>
+
     <label for="username">Пароль  учетной записи </label>
     <input type="text" id="password" name="password" required><br>
     <input type="submit" value="Войти">
-    <a href="Registration.html">Перейти на страницу регистрации</a>
+
+    <label for="username">Email </label>
+    <input type="text" id="email" name="email" required><br>
+
+    <a href="/Registration">Перейти на страницу регистрации</a>
 
 
 
