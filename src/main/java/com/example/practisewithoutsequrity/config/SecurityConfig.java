@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .successHandler(successHandler)
                 .and()
-                .csrf().ignoringAntMatchers("/Registration") // Добавьте эту строку здесь
+                .csrf().ignoringAntMatchers("/Registration")
                 .and()
                 .logout().permitAll()
                 .and()

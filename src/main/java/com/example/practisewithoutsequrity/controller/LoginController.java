@@ -11,7 +11,4 @@ public class LoginController {
         return "Login";
     }
 
-
-    @GetMapping("/Registration")
-    public String showRegistr(){return "Registration";}
 }

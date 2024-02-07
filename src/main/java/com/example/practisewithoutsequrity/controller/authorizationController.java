@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
 @Controller
-//@RequestMapping("/authorization")
 public class authorizationController {
 
     @Autowired
@@ -22,13 +19,8 @@ public class authorizationController {
     @ResponseBody
     public ModelAndView getUserById( User user) {
 
-
         User usser = service.findByEmail(user.getEmail());
         ModelAndView modelAndView = new ModelAndView();
-        //System.out.println("Usser is - " + usser.toString());
-
-        List<User> lst= service.findByAll();
-        System.out.println(lst.toString());
 
         if (usser != null) {
             modelAndView.addObject("user", usser);

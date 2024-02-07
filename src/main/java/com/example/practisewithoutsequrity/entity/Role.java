@@ -21,15 +21,13 @@ public class Role {
     private Integer id;
     private String name;
 
-    public Role() {}
+    public Role() {
+        this.name="user";
+    }
 
     @OneToMany(mappedBy = "role")
     @Column(name = "id_user")
     private List<User> users;
-
-    public Role(String r) {
-        this.name = r;
-    }
 
     public String toString(){
         return name;

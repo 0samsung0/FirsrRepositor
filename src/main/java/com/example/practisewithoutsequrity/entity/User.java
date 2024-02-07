@@ -16,7 +16,7 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Integer id;
     @Column(name = "name")
@@ -36,13 +36,14 @@ public class User {
 
     public User() {}
 
-    public User(String n, String p, String pos, String e, String l, String r){
+    public User(String n, String ph, String e, String pos, String p, String l){
         this.name=n;
-        this.password=p;
-        this.position=pos;
+        this.phone=ph;
         this.email=e;
+        this.position=pos;
+        this.password=p;
         this.login=l;
-        Role role = new Role(r);
+        this.role=new Role();
     }
 
     public User(String name, String pass){
