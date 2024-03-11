@@ -1,13 +1,13 @@
 package com.example.practisewithoutsequrity.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 @Setter
 @Getter
 @Table(name = "Task")
@@ -21,8 +21,6 @@ public class Task {
     private String Bio;
     @Column(name = "lvl_important")
     private Integer lvl_important;
-
-    public Task() {}
 
 
     @ManyToOne

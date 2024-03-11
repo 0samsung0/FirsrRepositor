@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -25,11 +26,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private CustomAuthenticationSuccessHandler successHandler;
 
-
-    //@Autowired
-    //private UserDetailsService userDetailsService;
-
-
     @Bean
     public PlatformTransactionManager transactionManager() {
         return new JpaTransactionManager(entityManagerFactory);
@@ -39,6 +35,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+//    @Autowired
+//    private AuthenticationManager authenticationManager;
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+
 
 
     @Override
@@ -60,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout().permitAll()
                 .and()
-                .exceptionHandling().accessDeniedPage("/register");
+                .exceptionHandling().accessDeniedPage("/emp-adm/work");
     }
 }
         //authorizeRequests()
@@ -84,21 +91,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-
-
-
+//Registration
+//Login
 
         //Employee
-              //work
+              //work(общий)
+
                  //my-profile
                     ///-{function-1}
-                 //my-drives
+                 //my-drives.html
                     ///-{function-2}
-                 //choose-drive
+                 //choose-drive.html
                     ///-{function-3}
 
         //Admin
-              //work-for-admin
+              //work(общий)
+
                  //work-with-users
                     ///-{function-4}
                  //work-with-ride
@@ -108,9 +116,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                  //my-profile
                     ///-{function-7}
 
-        //Registration.html
-        //Login
-        //User
 
 
 

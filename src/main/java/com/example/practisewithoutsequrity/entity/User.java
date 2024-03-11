@@ -1,18 +1,19 @@
 package com.example.practisewithoutsequrity.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 import java.util.List;
 
 @Entity
+@NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 @Setter
 @Getter
 @Table(name = "Users")
+@ToString
 public class User {
 
     @Id
@@ -33,26 +34,12 @@ public class User {
     private String login;
 
 
+//    public User(String name, String pass){
+//        this.name=name;
+//        this.password=pass;
+//    }
 
-    public User() {}
-
-    public User(String n, String ph, String e, String pos, String p, String l){
-        this.name=n;
-        this.phone=ph;
-        this.email=e;
-        this.position=pos;
-        this.password=p;
-        this.login=l;
-        this.role=new Role();
-    }
-
-    public User(String name, String pass){
-        this.name=name;
-        this.password=pass;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "role")
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     //@ManyToMany(mappedBy = "auto", cascade = CascadeType.ALL)
@@ -72,5 +59,19 @@ public class User {
     )
     private List<Drive> drive;
 
-    public String getRole(){return role.toString();}
+    public String getRole(){return role.getAuthority();}
+    public Role isAdmin(){return role = Role.ADMIN;}
+    public Role isUser(){return role = Role.USER;}
+    public Role isSysAdmin(){return role = Role.SYSADMIN;}
+
+    public void tooString(){
+        System.out.println("id= " + id
+                + " name= " + name
+                + " phone= " + phone
+                + " email=" + email
+                + " position= " + position
+                + " password= " + password
+                + " login= " + login);
+    }
+
 }

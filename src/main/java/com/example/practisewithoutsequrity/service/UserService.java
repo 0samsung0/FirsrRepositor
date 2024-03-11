@@ -12,6 +12,11 @@ public class UserService {
 
     private UserRepo userRepository;
 
+
+
+
+
+
     @Autowired
     UserService(UserRepo UR){
         this.userRepository = UR;
@@ -32,4 +37,5 @@ public class UserService {
         userRepository.save(u);
     }
 
+    public User findByLogin(String login) { return userRepository.findByLogin(login); }
 }

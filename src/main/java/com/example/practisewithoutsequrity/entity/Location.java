@@ -1,14 +1,13 @@
 package com.example.practisewithoutsequrity.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 @Setter
 @Getter
 @ToString
@@ -26,8 +25,6 @@ public class Location {
     String start_time;
     @Column(name = "finish_time")
     String finish_time;
-
-    public Location() {}
 
 
     @OneToOne(mappedBy = "location")

@@ -1,9 +1,6 @@
 package com.example.practisewithoutsequrity.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,7 +10,9 @@ import java.util.List;
 @Entity
 @Setter
 @Getter
+@NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 @ToString
 public class Drive {
 
@@ -32,7 +31,6 @@ public class Drive {
     @Column(name = "Title")
     private String title;
 
-    public Drive() {}
 
     public Drive(Integer i){
         this.id = i;

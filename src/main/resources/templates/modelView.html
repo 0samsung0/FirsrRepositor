@@ -5,6 +5,7 @@
 </head>
 <body>
 <h1>User Details</h1>
+<form action="/manageRole">
 <table>
     <tr>
         <th>ID</th>
@@ -22,6 +23,8 @@
         <td th:text="${user.position}"></td>
         <td th:text="${user.login}"></td>
     </tr>
+    <input type="submit" value="Все верно, это мои даные">
 </table>
+</form>
 </body>
 </html>

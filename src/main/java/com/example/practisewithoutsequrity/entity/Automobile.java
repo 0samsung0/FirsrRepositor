@@ -1,17 +1,16 @@
 package com.example.practisewithoutsequrity.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 @Setter
 @Getter
 @ToString
@@ -30,9 +29,6 @@ public class Automobile {
     @Column(name = "count_place")
     private Integer count_place;
 
-    public Automobile() {
-
-    }
 
     @ManyToMany(mappedBy = "auto")
     private List<User> users = new ArrayList<>();

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -17,31 +17,42 @@ public class RegistrationController {
 
     @Autowired
     private UserService userService;
-
-    @RequestMapping(value = "/Registration", method = RequestMethod.POST,  consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    @ResponseBody
-    public ModelAndView addUser(User user){
-
-        ModelAndView MAN = new ModelAndView();
-
-        System.out.println(user.toString() + "111111111111");
-
-        if(userService.findByEmail(user.getEmail()) == null){
-            MAN.setViewName("Login");
-            System.out.println(user.toString() + "2222222222");
-            userService.SaveUser(user);
-            System.out.println(user.toString() + "333333333333");
-        }else{
-            MAN.setViewName("Registration");
-        }
-        System.out.println(user.toString() + "444444444");
-        return MAN;
-    }
-
     @GetMapping("/Registration")
     public String regPage(){
         return "Registration";
     }
+    @RequestMapping(value = "/Registration", method = RequestMethod.POST,  consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public ModelAndView addUser(@RequestParam String name,
+                                @RequestParam String phone,
+                                @RequestParam String email,
+                                @RequestParam String position,
+                                @RequestParam String password,
+                                @RequestParam String login){
+
+        ModelAndView MAN = new ModelAndView();
+        User user = new User();
+
+        if(userService.findByLogin(user.getLogin()) == null ){
+            MAN.setViewName("Login");
+
+
+            user.setName(name);
+            user.setPhone(phone);
+            user.setEmail(email);
+            user.setPosition(position);
+            user.setPassword(password);
+            user.setLogin(login);
+            user.isUser();
+
+            userService.SaveUser(user);
+        }else{
+            MAN.setViewName("Registration");
+        }
+
+        return MAN;
+    }
+
+
 
 
 

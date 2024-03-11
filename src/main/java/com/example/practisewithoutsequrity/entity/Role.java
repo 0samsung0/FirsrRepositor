@@ -1,36 +1,15 @@
 package com.example.practisewithoutsequrity.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.*;
-import java.util.List;
+public enum Role implements GrantedAuthority {
 
+    ADMIN,
+    SYSADMIN,
+    USER;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@Entity
-@ToString
-public class Role {
+    @Override
+    public String getAuthority(){return name();}
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    private String name;
-
-    public Role() {
-        this.name="user";
-    }
-
-    @OneToMany(mappedBy = "role")
-    @Column(name = "id_user")
-    private List<User> users;
-
-    public String toString(){
-        return name;
-    }
 
 }
