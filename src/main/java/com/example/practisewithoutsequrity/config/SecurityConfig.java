@@ -1,89 +1,144 @@
 package com.example.practisewithoutsequrity.config;
 
+import com.example.practisewithoutsequrity.entity.User;
+import com.example.practisewithoutsequrity.repository.UserRepo;
+import com.example.practisewithoutsequrity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.transaction.PlatformTransactionManager;
-
-import javax.persistence.EntityManagerFactory;
-
+import org.springframework.security.web.SecurityFilterChain;
 
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig{
 
+
+    private AuthenticationManagerBuilder auth;
+    private UserService userService;
+
+    private UserRepo userRepo;
     @Autowired
-    private EntityManagerFactory entityManagerFactory;
-
-    @Autowired
-    private CustomAuthenticationSuccessHandler successHandler;
-
-    @Bean
-    public PlatformTransactionManager transactionManager() {
-        return new JpaTransactionManager(entityManagerFactory);
+    public SecurityConfig(UserService us, AuthenticationManagerBuilder aUMB, UserRepo uR)
+    {
+        this.userService = us;
+        this.auth=aUMB;
+        this.userRepo=uR;
     }
 
+
+    //бин кодировки типа BCrypt. Определен в RegistrationForm
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-//    @Autowired
-//    private AuthenticationManager authenticationManager;
 
+
+    //Загрузка пользователя если он существует
     @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
+    public UserDetailsService userDetailsService (UserRepo userRepo){
+        return login -> {
+            User user = userRepo.findByLogin(login);
+            if (user != null) return (UserDetails) user;
+
+            throw new UsernameNotFoundException("user" + login + " not Found !");
+        };
     }
 
+//    @Bean
+//    public UserDetailsService userDetailsService(UserRepo userRepo) {
+//        return new CustomUserDetailsServiceImpl(userRepo);
+//    }
 
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+        authenticationProvider.setUserDetailsService(userDetailsService(userRepo));
+        authenticationProvider.setPasswordEncoder(passwordEncoder());
+        return authenticationProvider;
+    }
 
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+//    @Autowired
+//    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+//    }
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+        return http
+                .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/user/**").hasRole("USER")
                 .antMatchers("/Registration").permitAll()
-                .antMatchers("/").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/LoginPage").permitAll()
+                .antMatchers("/AllUsers").permitAll()
+                .antMatchers("/FirstLogin").permitAll()
                 .and()
-                .formLogin()
-                .loginPage("/LoginPage")
-                .loginProcessingUrl("/authenticateTheUser")
-                .permitAll()
-                .successHandler(successHandler)
-                .and()
-                .csrf().ignoringAntMatchers("/Registration")
-                .and()
+                .csrf().disable()
+                .httpBasic(Customizer.withDefaults())
                 .logout().permitAll()
-                .and()
-                .exceptionHandling().accessDeniedPage("/emp-adm/work");
-    }
-}
-        //authorizeRequests()
-//                //.antMatchers("/user/**").hasRole("USER")
-//                //.antMatchers("/admin/**").hasRole("ADMIN")
-//                .anyRequest().permitAll()
 //                .and()
-//                .httpBasic();
+//                .authenticationProvider(authenticationProvider())
+//                .userDetailsService(userDetailsService(userRepo))
+//                .passwordEncoder(passwordEncoder())
+                .and().build();
+    }
+
+}
+
+
+
+
+    //настройка конфигурации безопасности
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests()
+//                .antMatchers("/admin/**").hasRole("ADMIN")
+//                .antMatchers("/user/**").hasRole("USER")
+//                .antMatchers("/Registration").permitAll()
+//                .antMatchers("/LoginPage").permitAll()
+//                .antMatchers("/AllUsers").permitAll()
+//                .and()
+//                .csrf().disable()
+//                .httpBasic().disable()
+////                .formLogin()
+////                .loginPage("/Login")
+////                .loginProcessingUrl("/Login")
+////                .usernameParameter("login")
+////                .passwordParameter("password")
+////                .defaultSuccessUrl("/")
+//                .logout().permitAll();
+//
+//    }
+
+
+
 
 
 
 //    @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService)
-//                .passwordEncoder(passwordEncoder());
+//        auth.userDetailsService(userService)
+//                .passwordEncoder(NoOpPasswordEncoder.getInstance());
 //    }
+
+
+
+
+
+
 
 
 

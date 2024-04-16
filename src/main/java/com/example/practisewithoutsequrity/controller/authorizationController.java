@@ -1,87 +1,65 @@
 package com.example.practisewithoutsequrity.controller;
 
 import com.example.practisewithoutsequrity.entity.User;
+import com.example.practisewithoutsequrity.service.CustomUserDetailsServiceImpl;
 import com.example.practisewithoutsequrity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class authorizationController {
 
+
+    private final CustomUserDetailsServiceImpl uDService;
+    private final PasswordEncoder passwordEncode;
+    UserService uS;
     @Autowired
-    private UserService service;
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @RequestMapping(value = "/emp-adm/work", method = RequestMethod.POST,  consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    @ResponseBody
-    public ModelAndView getUserById(User user) {
-
-        User usser = service.findByEmail(user.getEmail());
-        ModelAndView modelAndView = new ModelAndView();
-
-
-
-        if (usser != null) {
-
-
-            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getLogin(), user.getPassword());
-            Authentication authentication = authenticationManager.authenticate(authenticationToken);
-
-
-
-
-            if(authenticationToken.isAuthenticated()){
-
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-
-                System.out.println(usser.toString());
-                if(usser.getRole() == "ADMIN"){
-
-
-                    ModelMap mm = new ModelMap();
-
-                    mm.addAttribute("login", user.getLogin());
-                    mm.addAttribute("password", user.getPassword());
-                    mm.addAttribute("email", user.getEmail());
-
-                    System.out.println("ROLE IS ADMIN !!!!!!!!!!!!!!");
-
-                    return new ModelAndView("redirect:/admin/homePage", mm);
-
-                }else{
-
-
-                    ModelMap mm = new ModelMap();
-
-                    mm.addAttribute("login", user.getLogin());
-                    mm.addAttribute("password", user.getPassword());
-                    mm.addAttribute("email", user.getEmail());
-
-                    System.out.println("ROLE IS NOT ADMIN !!!!!!!!!!!!!!");
-
-                    return new ModelAndView("redirect:/user/HomePage", mm);
-                }
-
-            }
-
-        } else {
-            return modelAndView;
-        }
-        return modelAndView;
+    authorizationController(CustomUserDetailsServiceImpl us,
+                            PasswordEncoder passEncoder,
+                            UserService uS){
+        this.uDService=us;
+        this.passwordEncode=passEncoder;
+        this.uS=uS;
     }
 
+    @PostMapping("/FirstLogin")
+    public String authorization(@RequestParam(value = "login", required = true) String login,
+                                @RequestParam(value = "password", required = false) String password) {
 
+
+
+        User user = uS.findByLogin(login);
+        System.out.println("\n\n +++++++++" + new SimpleGrantedAuthority(user.getRole()));
+        System.out.println("-----------------------------\n");
+
+        UserDetails userDetails;
+        userDetails = uDService.loadUserByLogin(login);
+        System.out.println(user.toString() + "\n----------------------------- \n"+ "passwordNotEncode = "+
+                password + "\n"+
+                passwordEncode.encode(password)+"\n");
+
+        System.out.println("\nIS PASSWORDS IS ===== " + passwordEncode.matches(password,user.getPassword()));
+
+        if(passwordEncode.matches(password,user.getPassword())){
+            if(user.getRole().equals("ADMIN")) {
+                System.out.println("ROLE IS ADMIN !!!!!!!!!!!!!! \n");
+                return "redirect:/admin/homePage";
+            }
+            System.out.println("ROLE IS USER !!!!!!!!!!!!!! \n");
+            return "redirect:/user/HomePage";
+
+        }
+
+        System.out.println("\nencodePassword = "+passwordEncode.encode(password) +
+                "\n" + "user.Password = " + user.getPassword() + "\n");
+
+        return "redirect:/LoginPage";
+
+    }
 }
 
