@@ -29,11 +29,10 @@ public class User{
     private String position;
     @Column(name = "password")
     private String password;
-    @Column(name = "login")
-    private String login;
+    @Column(name = "totalMoney")
+    private Integer totalMoney;
 
     @Setter
-    //@Enumerated(EnumType.STRING)
     @Getter
     private String role;
 
@@ -77,8 +76,8 @@ public class User{
                 + " phone= " + phone
                 + " email=" + email
                 + " position= " + position
-                + " password= " + password
-                + " login= " + login);
+                + " totalMoney = " + totalMoney
+                + " password= " + password);
     }
 
     //    @Override

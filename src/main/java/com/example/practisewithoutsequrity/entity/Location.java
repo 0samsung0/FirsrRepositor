@@ -13,7 +13,7 @@ import javax.persistence.*;
 @ToString
 public class Location {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "location_id")
     Integer id;

@@ -35,8 +35,19 @@ public class UserService
         userRepository.save(u);
     }
 
-    public User findByLogin(String login) { return userRepository.findByLogin(login); }
+   // public User findByLogin(String login) { return userRepository.findByLogin(login); }
 
+    public User updateUser(int id , User u){
 
+        User oldUser = userRepository.findById(id).get();
+
+        oldUser.setPhone(u.getPhone());
+        oldUser.setEmail(u.getEmail());
+        oldUser.setUsername(u.getUsername());
+        oldUser.setPosition(u.getPosition());
+
+        return userRepository.save(oldUser);
+    }
 
 }
+

@@ -5,22 +5,16 @@
 </head>
 <body>
 <h1>Меню навигации</h1>
-<button onclick="goToMyProfile()">Мой профиль</button>
-<button onclick="goToMyTrips()">Мои поездки</button>
-<button onclick="goToSelectTrip()">Выбрать поездку</button>
+<form action="/user/userUpdated" method="get">
+    <button type="submit">Мой профиль(внести корректировки)</button>
+</form>
+<form action="/user/userUpdated">
+    <button type="submit">Мои поезки</button>
+</form>
+<form action="/user/userUpdated">
+    <button type="submit">Задания на коммандировки</button>
+</form>
 
-<script>
-    function goToMyProfile() {
-        window.location.href = "user/my-profile";
-    }
 
-    function goToMyTrips() {
-        window.location.href = "user/my-trips";
-    }
-
-    function goToSelectTrip() {
-        window.location.href = "user/select-trip";
-    }
-</script>
 </body>
 </html>

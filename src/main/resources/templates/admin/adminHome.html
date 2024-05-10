@@ -4,46 +4,22 @@
     <title>Меню навигации</title>
 </head>
 <body>
+
+
 <h1>Меню навигации</h1>
-<button onclick="goToMyProfile()">Мой профиль</button>
-<button onclick="goToTrips()">Работа с поездками</button>
-<button onclick="goToUsers()">Работа с пользователями</button>
-<button onclick="goToWorkWithCar()">Работа с машинами</button>
+<form action="/admin/adminUpdated" method="GET">
+    <button type="submit">Мой профиль</button>
+</form>
+<form action="/admin/businessRide">
+    <button type="submit">Работа с командировками</button>
+</form>
+<form action="/admin/automobile">
+    <button type="submit">Работа с автомобилями</button>
+</form>
+<form action="/admin/users">
+    <button type="submit">Работа с пользователями</button>
+</form>
 
-<script>
-    function goToMyProfile() {
-        window.location.href = "admin/my-profile";
-    }
 
-    function goToTrips() {
-        window.location.href = "admin/work-trips";
-    }
-
-    function goToUsers() {
-        window.location.href = "admin/work-user";
-    }
-
-    function goToWorkWithCar(){
-        window.location.href = "admin/work-car";
-    }
-</script>
 </body>
 </html>
-
-
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--    <title>Главная страница работы администратора</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>Главная страница работы администратора</h1>-->
-
-<!--<form>-->
-<!--    <button type="submit" formaction="/users">Работа с пользователями</button>-->
-<!--    <button type="submit" formaction="/trips">Работа с поездками</button>-->
-<!--    <button type="submit" formaction="/cars">Работа с машинами</button>-->
-<!--    <button type="submit" formaction="/profile">Мой профиль</button>-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->

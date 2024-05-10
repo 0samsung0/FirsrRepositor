@@ -2,6 +2,7 @@ package com.example.practisewithoutsequrity.config;
 
 //import com.example.practisewithoutsequrity.model.AuthProvider;
 
+import com.example.practisewithoutsequrity.model.RoleBasedAuthenticationSuccessHandler;
 import com.example.practisewithoutsequrity.repository.UserRepo;
 import com.example.practisewithoutsequrity.service.CustomUserDetailService;
 import com.example.practisewithoutsequrity.service.UserService;
@@ -13,7 +14,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
@@ -46,8 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder passwordEncoder() {
 
-        return NoOpPasswordEncoder.getInstance();
-        //return new BCryptPasswordEncoder();
+        //return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
 
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -60,9 +61,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
+                   .antMatchers("/test/**").permitAll()
                    .antMatchers("/LoginPage").permitAll()
                    .antMatchers("/admin/**").hasRole("ADMIN")
-                   //.antMatchers("/user/HomePage").hasRole("USER")
+                   .antMatchers("/user/**").hasRole("USER")
                    .antMatchers("/*").permitAll()
                 .and()
                    .formLogin()
@@ -70,7 +72,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                    .loginProcessingUrl("/LoginPage")
                    .usernameParameter("username")
                    .passwordParameter("password")
-                   .defaultSuccessUrl("/admin/homePage", true)
+                   .successHandler(new RoleBasedAuthenticationSuccessHandler())
+                //.defaultSuccessUrl("/admin/homePage", true)
+                .and()
+                   .logout()
+                   .logoutUrl("/Logout")
+                   .logoutSuccessUrl("/LoginPage")
                 .and()
                    .httpBasic()
                    .disable();

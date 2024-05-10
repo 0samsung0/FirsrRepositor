@@ -21,6 +21,8 @@ public class Task {
     private String Bio;
     @Column(name = "lvl_important")
     private Integer lvl_important;
+    @Column(name = "cost")
+    private Integer cost;
 
 
     @ManyToOne

@@ -29,8 +29,8 @@ public class RegistrationForm {
         user.setEmail(email);
         user.setPosition(position);
         user.setPassword(pasEnc.encode(password));
-        user.setLogin(login);
-        user.setRole("USER");
+        //user.setLogin(login);
+        user.setRole("ROLE_USER");
 
         return user;
     }

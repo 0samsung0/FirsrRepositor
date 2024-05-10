@@ -7,17 +7,17 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
+@ToString
 @EqualsAndHashCode
+@Entity
 @Setter
 @Getter
-@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class Automobile {
 
-
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(name = "brand")
@@ -37,5 +37,9 @@ public class Automobile {
     @JoinColumn(name = "drive_id")
     private Drive drive;
 
-
+    public Automobile(String brandd, String colorr, Integer count){
+        this.brand=brandd;
+        this.color=colorr;
+        this.count_place=count;
+    }
 }
