@@ -1,53 +1,62 @@
 package com.example.practisewithoutsequrity.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-
+import java.util.ArrayList;
 import java.util.List;
 
-
 @Entity
-@Setter
 @Getter
-@NoArgsConstructor
+@Setter
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(exclude = "location")
 @ToString
 public class Drive {
 
-
-    @Getter
-    @Setter
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @Column(name = "count_place")
-    private String count_place;
+
     @Column(name = "status")
     private String status;
-    @Column(name = "car_id")
-    private Integer car_id;
-    @Column(name = "Title")
+
+    @Column(name = "title")
     private String title;
 
 
-    public Drive(Integer i){
-        this.id = i;
-    }
 
-    @ManyToMany(mappedBy = "drive")
-    //@JoinColumn(name = "user")
-    private List<User> users;
 
-    @OneToMany(mappedBy = "drive")
-    private List<Automobile> auto;
 
-    @OneToOne
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "drive", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<User> users = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "drive", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Automobile> auto = new ArrayList<>();
+
+    @OneToOne(optional = false, cascade=CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JsonIgnore
+    @JoinColumn(name = "location_id")
     private Location location;
 
-    @OneToMany(mappedBy = "drive")
-    private List<Task> task;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "drive", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Task> task = new ArrayList<>();
 
+
+
+
+
+    public Drive(){}
+
+    public Drive(String status, String title){
+        this.title = title;
+        this.status = status;
+    }
 
 }

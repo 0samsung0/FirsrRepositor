@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -62,9 +63,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                    .antMatchers("/test/**").permitAll()
+                   .antMatchers("/resources/**").permitAll()
                    .antMatchers("/LoginPage").permitAll()
                    .antMatchers("/admin/**").hasRole("ADMIN")
                    .antMatchers("/user/**").hasRole("USER")
+                   //.antMatchers("/templates/GlobalHome").permitAll()
                    .antMatchers("/*").permitAll()
                 .and()
                    .formLogin()
@@ -72,8 +75,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                    .loginProcessingUrl("/LoginPage")
                    .usernameParameter("username")
                    .passwordParameter("password")
-                   .successHandler(new RoleBasedAuthenticationSuccessHandler())
-                //.defaultSuccessUrl("/admin/homePage", true)
+                    .successHandler(new RoleBasedAuthenticationSuccessHandler())
                 .and()
                    .logout()
                    .logoutUrl("/Logout")
@@ -83,6 +85,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                    .disable();
 
     }
+
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+                .ignoring()
+                .antMatchers("/css/**","/images/**");
+    }
+
+    private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
+            "classpath:/META-INF/resources/", "classpath:/resources/",
+            "classpath:/static/", "classpath:/public/" };
+
 }
 
 

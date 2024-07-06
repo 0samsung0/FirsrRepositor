@@ -1,0 +1,150 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 20px;
+    overflow: hidden; /* Отключаем прокрутку для лучшего отображения фона */
+}
+/* Добавляем стили для кнопки */
+/* input[type="submit"] {
+    background-color: #ff0000;
+    color: #ffffff;
+    font-weight: bold;
+} */
+
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #3b3b3b;
+    border: 2px solid #555;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 1; /* Поднимаем контейнер выше фона */
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2em;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    color: #ffcc00;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    color: #ffcc00;
+}
+
+.dropdown, input[type="text"],
+input[type="password"],
+input[type="email"],
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #555;
+    border-radius: 8px;
+    background-color: #444;
+    color: #e0e0e0;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+.dropdown, input[type="submit"], button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #555;
+    border-radius: 8px;
+    background-color: #250;
+    color: #e0e0e0;
+    font-size: 1em;
+    transition: all 0.3s ease;
+
+}
+button {
+    background-color: #ffcc00;
+    color: #333;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background-color: #e6b800;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    background-color: #4c4c4c;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 2px solid #555;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* Добавляем более мягкие формы на фоне */
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: #555;
+    transform: rotate(45deg);
+    opacity: 0.1;
+    z-index: -1;
+}
+
+body::before {
+    top: -100px;
+    left: -100px;
+}
+
+body::after {
+    bottom: -100px;
+    right: -100px;
+}
+
+/* Дополнительные формы для большего разнообразия */
+.container::before,
+.container::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border-radius: 0;
+    opacity: 0.15;
+    background-color: #666;
+    transform: rotate(45deg);
+}
+
+.container::before {
+    width: 150px;
+    height: 150px;
+    top: -75px;
+    left: -75px;
+}
+
+.container::after {
+    width: 100px;
+    height: 100px;
+    bottom: -50px;
+    right: -50px;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Страница добавления задания</title>
+    <meta charset="utf-8">
+    <link href="/css/Login.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://images.wallpaperscraft.ru/image/single/doski_steny_kraska_974371_1920x1080.jpg');
+            background-size: cover; /* Фоновое изображение будет охватывать весь экран */
+            background-position: center; /* Центрируем фоновое изображение */
+            background-repeat: no-repeat; /* Избегаем повторения фонового изображения */
+            background-attachment: fixed; /* Фоновое изображение остается фиксированным при прокрутке */
+        }
+    </style>
+</head>
+<body>
+<h1>Страница добовления задания</h1>
+<form action="/admin/saveTask" method="post" enctype="application/x-www-form-urlencoded">
+
+    <label for="bio">Задание</label>
+    <input type="text" id="bio" name="bio" required><br>
+
+    <label for="lvl_important">уровень значимости</label>
+    <input type="text" id="lvl_important" name="lvl_important" required><br>
+
+    <label for="cost">Расчетный счет</label>
+    <input type="text" id="cost" name="cost" required><br>
+
+    <input type="submit" value="Добавить задание">
+
+</form>
+</body>
+</html>

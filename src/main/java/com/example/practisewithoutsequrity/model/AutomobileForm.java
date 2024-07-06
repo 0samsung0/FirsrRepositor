@@ -22,7 +22,7 @@ public class AutomobileForm {
 
         a.setBrand(brand);
         a.setColor(color);
-        a.setCount_place(count_place);
+        a.setCountPlace(count_place);
 
         System.out.println("\n AUTOMOBILE FORM =========== " + brand + " " + color + " " + count_place + "\n" );
 

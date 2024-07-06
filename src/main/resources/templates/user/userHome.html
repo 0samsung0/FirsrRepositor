@@ -2,16 +2,18 @@
 <html>
 <head>
     <title>Меню навигации</title>
+    <meta charset="utf-8">
+    <link href="/css/Login.css" rel="stylesheet">
 </head>
 <body>
 <h1>Меню навигации</h1>
 <form action="/user/userUpdated" method="get">
     <button type="submit">Мой профиль(внести корректировки)</button>
 </form>
-<form action="/user/userUpdated">
-    <button type="submit">Мои поезки</button>
+<form action="/user/showListDrivee">
+    <button type="submit">Все командировки </button>
 </form>
-<form action="/user/userUpdated">
+<form action="/user/getTask">
     <button type="submit">Задания на коммандировки</button>
 </form>
 

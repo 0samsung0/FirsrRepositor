@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма для 5 заданий по командировкам</title>
+    <style>
+        .task {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        .task h3 {
+            margin-top: 0;
+        }
+        .task div {
+            margin-bottom: 5px;
+        }
+        .task label {
+            display: inline-block;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+<form action="/submit" method="post">
+    <h1>Форма для 5 заданий по командировкам</h1>
+
+    <!-- Задание 1 -->
+    <div class="task">
+        <h3>Командировка 1</h3>
+        <div>
+            <label for="task1_id">ID:</label>
+            <input type="number" id="task1_id" name="task1_id" value="1">
+        </div>
+        <div>
+            <label for="task1_bio">Описание:</label>
+            <input type="text" id="task1_bio" name="task1_bio" value="Поездка на конференцию в Москву">
+        </div>
+        <div>
+            <label for="task1_lvl_important">Уровень важности:</label>
+            <input type="number" id="task1_lvl_important" name="task1_lvl_important" value="5">
+        </div>
+        <div>
+            <label for="task1_cost">Стоимость:</label>
+            <input type="number" id="task1_cost" name="task1_cost" value="50000">
+        </div>
+        <div>
+            Поездка на важную конференцию, посвященную новейшим разработкам в нашей отрасли.
+        </div>
+    </div>
+
+    <!-- Задание 2 -->
+    <div class="task">
+        <h3>Командировка 2</h3>
+        <div>
+            <label for="task2_id">ID:</label>
+            <input type="number" id="task2_id" name="task2_id" value="2">
+        </div>
+        <div>
+            <label for="task2_bio">Описание:</label>
+            <input type="text" id="task2_bio" name="task2_bio" value="Встреча с клиентами в Санкт-Петербурге">
+        </div>
+        <div>
+            <label for="task2_lvl_important">Уровень важности:</label>
+            <input type="number" id="task2_lvl_important" name="task2_lvl_important" value="4">
+        </div>
+        <div>
+            <label for="task2_cost">Стоимость:</label>
+            <input type="number" id="task2_cost" name="task2_cost" value="30000">
+        </div>
+        <div>
+            Встреча с ключевыми клиентами для обсуждения новых проектов и укрепления деловых отношений.
+        </div>
+    </div>
+
+    <!-- Задание 3 -->
+    <div class="task">
+        <h3>Командировка 3</h3>
+        <div>
+            <label for="task3_id">ID:</label>
+            <input type="number" id="task3_id" name="task3_id" value="3">
+        </div>
+        <div>
+            <label for="task3_bio">Описание:</label>
+            <input type="text" id="task3_bio" name="task3_bio" value="Семинар по новым технологиям в Новосибирске">
+        </div>
+        <div>
+            <label for="task3_lvl_important">Уровень важности:</label>
+            <input type="number" id="task3_lvl_important" name="task3_lvl_important" value="3">
+        </div>
+        <div>
+            <label for="task3_cost">Стоимость:</label>
+            <input type="number" id="task3_cost" name="task3_cost" value="40000">
+        </div>
+        <div>
+            Участие в семинаре, посвященном последним технологическим достижениям в нашей области.
+        </div>
+    </div>
+
+    <!-- Задание 4 -->
+    <div class="task">
+        <h3>Команд<h3>Командировка 4</h3>
+            <div>
+                <label for="task4_id">ID:</label>
+                <input type="number" id="task4_id" name="task4_id" value="4">
+            </div>
+            <div>
+                <label for="task4_bio">Описание:</label>
+                <input type="text" id="task4_bio" name="task4_bio" value="Тренинг по управлению проектами в Екатеринбурге">
+            </div>
+            <div>
+                <label for="task4_lvl_important">Уровень важности:</label>
+                <input type="number" id="task4_lvl_important" name="task4_lvl_important" value="4">
+            </div>
+            <div>
+                <label for="task4_cost">Стоимость:</label>
+                <input type="number" id="task4_cost" name="task4_cost" value="35000">
+            </div>
+            <div>
+                Участие в тренинге по улучшению навыков управления проектами для повышения эффективности работы.
+            </div>
+    </div>
+
+    <!-- Задание 5 -->
+    <div class="task">
+        <h3>Командировка 5</h3>
+        <div>
+            <label for="task5_id">ID:</label>
+            <input type="number" id="task5_id" name="task5_id" value="5">
+        </div>
+        <div>
+            <label for="task5_bio">Описание:</label>
+            <input type="text" id="task5_bio" name="task5_bio" value="Визит на производственное предприятие в Казани">
+        </div>
+        <div>
+            <label for="task5_lvl_important">Уровень важности:</label>
+            <input type="number" id="task5_lvl_important" name="task5_lvl_important" value="5">
+        </div>
+        <div>
+            <label for="task5_cost">Стоимость:</label>
+            <input type="number" id="task5_cost" name="task5_cost" value="45000">
+        </div>
+        <div>
+            Визит на производственное предприятие для оценки новых производственных линий и обсуждения возможных партнерств.
+        </div>
+    </div>
+
+    <div>
+        <button type="submit">Отправить</button>
+    </div>
+</form>
+</body>
+</html>
+
+
+

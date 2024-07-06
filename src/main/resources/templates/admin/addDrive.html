@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<head>
+    <title>Добавление командировки</title>
+    <meta charset="utf-8">
+    <link href="/css/Login.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h2>Добавление командировки</h2>
+
+
+
+
+    <form method="post" action="/admin/adminn">
+
+
+                <div class="form-group">
+                    <label for="drive">Тема:</label>
+                    <input type="text" class="form-control" id="drive" th:field="*{drive.title}" placeholder="Введите тему">
+                </div>
+        <div>
+            <label for="automobile_id">Автомобиль:</label>
+            <select id="automobile_id" name="automobile_id">
+                <option th:each="auto : ${automobiles}" th:value="${auto.id}" th:text="${auto.brand}"></option>
+            </select>
+        </div>
+        <div>
+            <label for="user_id">Пользователь:</label>
+            <select id="user_id" name="user_id">
+                <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
+            </select>
+        </div>
+        <div>
+            <label for="location_id">Местоположение:</label>
+            <select id="location_id" name="location_id">
+                <option th:each="location : ${locations}" th:value="${location.id}" th:text="${location.startLocation}"></option>
+            </select>
+        </div>
+        <div>
+            <label for="task_id">Задание:</label>
+            <select id="task_id" name="task_id">
+                <option th:each="task : ${tasks}" th:value="${task.id}" th:text="${task.bio}"></option>
+            </select>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Готово</button>
+    </form>
+</div>
+</body>
+</html>

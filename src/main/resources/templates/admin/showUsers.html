@@ -1,0 +1,147 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <link rel="stylesheet" href="/css/Login.css">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Работники предприятия</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--        }-->
+
+<!--        .header {-->
+<!--            text-align: center;-->
+<!--            margin-top: 20px;-->
+<!--        }-->
+
+<!--        .container {-->
+<!--            display: grid;-->
+<!--            grid-template-columns: repeat(2, 1fr);-->
+<!--            gap: 20px;-->
+<!--            width: 80%;-->
+<!--            margin: 20px auto;-->
+<!--        }-->
+
+<!--        .user-card {-->
+<!--            padding: 20px;-->
+<!--            border: 1px solid #ccc;-->
+<!--            border-radius: 8px;-->
+<!--            text-align: center;-->
+<!--            background-color: #675;-->
+<!--            cursor: pointer;-->
+<!--            transition: background-color 0.3s;-->
+<!--        }-->
+
+<!--        .user-card:hover {-->
+<!--            background-color: #a434;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="header">-->
+<!--    <h1>Работники предприятия</h1>-->
+<!--</div>-->
+
+<!--<div class="container">-->
+<!--    <div th:each="user : ${users}" class="user-card" th:onclick="'window.location.href=\'/admin/showUser?id=' + ${user.id}'">-->
+<!--        <p><strong>Имя:</strong> <span th:text="${user.username}"></span></p>-->
+<!--        <p><strong>Телефон:</strong> <span th:text="${user.phone}"></span></p>-->
+<!--        <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>-->
+<!--        <p><strong>Должность:</strong> <span th:text="${user.position}"></span></p>-->
+<!--        <p><strong>Общая сумма денег:</strong> <span th:text="${user.totalMoney}"></span></p>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/Login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Работники предприятия</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .user-card {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+            background-color: #675;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .user-card:hover {
+            background-color: #a434;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>Работники предприятия</h1>
+</div>
+
+<div class="container">
+    <div class="user-card">
+        <p><strong>Имя:</strong> Иван Иванов</p>
+        <p><strong>Телефон:</strong> +7 (999) 123-45-67</p>
+        <p><strong>Email:</strong> ivan@example.com</p>
+        <p><strong>Должность:</strong> Менеджер</p>
+        <p><strong>Общая сумма денег:</strong> 50000 руб.</p>
+    </div>
+    <div class="user-card">
+        <p><strong>Имя:</strong> Мария Смирнова</p>
+        <p><strong>Телефон:</strong> +7 (999) 234-56-78</p>
+        <p><strong>Email:</strong> maria@example.com</p>
+        <p><strong>Должность:</strong> Бухгалтер</p>
+        <p><strong>Общая сумма денег:</strong> 60000 руб.</p>
+    </div>
+    <div class="user-card">
+        <p><strong>Имя:</strong> Сергей Петров</p>
+        <p><strong>Телефон:</strong> +7 (999) 345-67-89</p>
+        <p><strong>Email:</strong> sergey@example.com</p>
+        <p><strong>Должность:</strong> Инженер</p>
+        <p><strong>Общая сумма денег:</strong> 55000 руб.</p>
+    </div>
+    <div class="user-card">
+        <p><strong>Имя:</strong> Анна Кузнецова</p>
+        <p><strong>Телефон:</strong> +7 (999) 456-78-90</p>
+        <p><strong>Email:</strong> anna@example.com</p>
+        <p><strong>Должность:</strong> Секретарь</p>
+        <p><strong>Общая сумма денег:</strong> 45000 руб.</p>
+    </div>
+    <div class="user-card">
+        <p><strong>Имя:</strong> Дмитрий Соколов</p>
+        <p><strong>Телефон:</strong> +7 (999) 567-89-01</p>
+        <p><strong>Email:</strong> dmitry@example.com</p>
+        <p><strong>Должность:</strong> Директор</p>
+        <p><strong>Общая сумма денег:</strong> 80000 руб.</p>
+    </div>
+</div>
+</body>
+</html>

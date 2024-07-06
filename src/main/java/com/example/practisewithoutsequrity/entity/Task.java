@@ -1,5 +1,6 @@
 package com.example.practisewithoutsequrity.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,22 +12,23 @@ import javax.persistence.*;
 @Setter
 @Getter
 @Table(name = "Task")
+@ToString
 public class Task {
 
     @Id
     @Column(name = "product_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Column(name = "bio")
-    private String Bio;
+    private String bio;
     @Column(name = "lvl_important")
     private Integer lvl_important;
     @Column(name = "cost")
     private Integer cost;
 
 
-    @ManyToOne
-    @JoinColumn(name = "task")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "drive_id", nullable = true)
+    @JsonIgnore
     private Drive drive;
-
 }

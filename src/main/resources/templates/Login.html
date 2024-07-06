@@ -1,26 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>Страница входа</title>
+    <link rel="stylesheet" href="/css/Login.css">
+    <style>
+        body {
+            background-image: url("https://images.wallpaperscraft.ru/image/single/abstraktsiia_geometriia_figury_93400_1920x1080.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 2em;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            color: #ff0000;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+            color: #008000;
+        }
+
+        .large-text {
+            text-align: center;
+            font-size: 1.5em;
+            color: #ff8c00;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-<h1>Добро пожаловать !</h1>
+<h1>Добро пожаловать в цифровой мир командировок</h1>
 <form action="/LoginPage" method="POST" enctype="application/x-www-form-urlencoded">
-
-    <label for="username">Логин учетной записи </label>
+    <label for="username">Логин учетной записи</label>
     <input type="text" id="username" name="username" required><br>
 
-    <label for="password">Пароль  учетной записи </label>
+    <label for="password">Пароль учетной записи</label>
     <input type="password" id="password" name="password" required><br>
     <input type="submit" value="Войти">
 
-<!--    <label for="email">Email </label>-->
-<!--    <input type="text" id="email" name="email" required><br>-->
-
     <a href="/Registration" methods="Get">Перейти на страницу регистрации</a>
+    <a href="/GlobalPage" methods="Get">Перейти на главную</a>
 
-
-
+    <p class="large-text"></p>
 </form>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head >-->
+<!--    <meta charset="utf-8">-->
+<!--    <title>Страница входа</title>-->
+<!--    <link rel="stylesheet" href="/css/Login.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Добро пожаловать !</h1>-->
+<!--<form action="/LoginPage" method="POST" enctype="application/x-www-form-urlencoded">-->
+
+<!--    <label for="username">Логин учетной записи </label>-->
+<!--    <input type="text" id="username" name="username" required><br>-->
+
+<!--    <label for="password">Пароль  учетной записи </label>-->
+<!--    <input type="password" id="password" name="password" required><br>-->
+<!--    <input type="submit" value="Войти">-->
+
+<!--&lt;!&ndash;    <label for="email">Email </label>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" id="email" name="email" required><br>&ndash;&gt;-->
+
+<!--    <a href="/Registration" methods="Get">Перейти на страницу регистрации</a>-->
+
+
+
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->

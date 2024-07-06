@@ -7,21 +7,23 @@
             display: none;
         }
     </style>
+    <meta charset="utf-8">
+    <link href="/css/Login.css" rel="stylesheet">
 </head>
 <body>
 
 <h1>Изменение профиля</h1>
 
 <form action="/user/userUpdate" method="POST"  enctype="application/x-www-form-urlencoded">
-    <label for="username">Your name:</label>
+    <label for="username">Ваше имя(неизменяемо):</label>
     <input type="text" id="username" name="username" th:value="${user.username}" readonly>
 
 
 
-    <label for="position">Position:</label>
+    <label for="position">Должность:</label>
     <input type="text" id="position" name="position" required><br><br>
 
-    <label for="phone">Phone:</label>
+    <label for="phone">Телефон:</label>
     <input type="text" id="phone" name="phone" required><br><br>
 
     <label for="email">Email:</label>

@@ -7,12 +7,14 @@
             display: none;
         }
     </style>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/Login.css">
 </head>
 <body>
 
 <h1>Изменение профиля</h1>
 
-<form action="/admin/adminUpdateUpdate" method="POST"  enctype="application/x-www-form-urlencoded">
+<form action="/admin/adminUpdate" method="POST"  enctype="application/x-www-form-urlencoded">
     <label for="username">Your name:</label>
     <input type="text" id="username" name="username" th:value="${user.username}" readonly>
 

@@ -23,8 +23,9 @@ public class AutomobileService {
         System.out.println("\nsave automobile before");
         automobileRepo.save(automobile);
         System.out.println("\nsave automobile after");
-
     }
+
+
     public List<Automobile> findByAll() {
         return automobileRepo.findAll();
     }

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -30,20 +32,40 @@ public class UserController {
     }
 
     @GetMapping(path = "/userUpdated")
-    public String UpdateUser(Model model) {
+    public String UpdateUser( Model model) {
+
+
+        List<User> users = userRepo.findAll();
+        User loadUser = new User();
 
         String userName="";
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userName = ((UserDetails) principal).getUsername();
+        for(User u : users){
+            if(u.getUsername().equals(userName)){
+                loadUser.setPhone(u.getPhone());
+                loadUser.setEmail(u.getEmail());
+                loadUser.setPosition(u.getPosition());
+                loadUser.setUsername(u.getUsername());
+                loadUser.setId(u.getId());
 
-        System.out.println(userName);
+                break;
+            }
+        }
 
-        User user = userRepo.findByUsername(userName).get();
-        model.addAttribute("user", user);
-        int id = user.getId();
-        model.addAttribute("id", id);
+        System.out.println( userName+ "---------------------------------------------------------------");
 
-        System.out.println(" \n FULLL is useeeeeeer === " + user.toString());
+        //Optional<User> userOptional = userRepo.findByUsername(userName);
+      //  Hibernate.initialize(userOptional.get().getDrive());
+
+        //System.out.println(userOptional);
+        //User user = userOptional.get();
+
+        model.addAttribute("user", loadUser);
+        //int id = user.getId();
+        model.addAttribute("id", loadUser.getId());
+
+        //System.out.println(" \n FULLL is useeeeeeer === " + user.toString());
 
         return "user/userUpdate";
     }
@@ -59,6 +81,18 @@ public class UserController {
 
         System.out.println("\nTHIS IS THE UPDATED USER" + userUp.toString() + "\n\n");
         return "redirect:/user/HomePage";
+    }
+
+    @RequestMapping(value = "/getTask")
+    public String getTask(){
+        return "user/getTask";
+    }
+
+    @RequestMapping(value = "/showListDrivee", method = RequestMethod.GET)
+    public String showDriveUser(Model model){
+        //List<Drive> drives = driveRepo.findAll();
+        //model.addAttribute("drives", drives);
+        return "/user/showListDrives";
     }
 
 }

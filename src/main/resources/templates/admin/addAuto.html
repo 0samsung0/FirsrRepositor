@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Страница добавления автомобиля</title>
+    <meta charset="utf-8">
+    <link href="/css/Login.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://images.wallpaperscraft.ru/image/single/doski_steny_kraska_974371_1920x1080.jpg');
+            background-size: cover; /* Фоновое изображение будет охватывать весь экран */
+            background-position: center; /* Центрируем фоновое изображение */
+            background-repeat: no-repeat; /* Избегаем повторения фонового изображения */
+            background-attachment: fixed; /* Фоновое изображение остается фиксированным при прокрутке */
+        }
+    </style>
+</head>
+<body>
+<h1>Страница добавления автомобиля</h1>
+<form action="/admin/saveAuto" method="post" enctype="application/x-www-form-urlencoded">
+
+    <label for="brand">Марка автомобиля</label>
+    <input type="text" id="brand" name="brand" required><br>
+
+    <label for="color">Цвет</label>
+    <input type="text" id="color" name="color" required><br>
+
+    <label for="count_place">Количество посадочных мест</label>
+    <input type="text" id="count_place" name="count_place" required><br>
+
+    <input type="submit" value="Добавить автомобиль">
+
+</form>
+</body>
+</html>

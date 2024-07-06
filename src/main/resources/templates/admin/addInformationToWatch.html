@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head><style>      body {
+    font-family: Arial, sans-serif;
+    background-image: url("https://images.wallpaperscraft.ru/image/single/treugolniki_teni_linii_1230889_1920x1080.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+}
+
+.left-column {
+    flex: 1;
+    padding: 20px;
+    color: white;
+}
+
+.right-column {
+    flex: 1;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    color: white;
+}
+
+th, td {
+    padding: 10px;
+}</style></head>
+<body>
+
+<form action="/test/saveToDrive" method="POST">
+    <!-- Поля для отображения информации о командировке -->
+    <label>Название командировки:</label>
+    <span th:text="${drive.title}"></span>
+<!--    <input type="text" id="tripName" name="tripName" required>-->
+    <option th:value="${drive.title}" th:text="${drive.title}"></option>
+    <option th:value="${drive.id}" th:text="${drive.id}"></option>
+    <option th:value="${drive.status}" th:text="${drive.status}"></option>
+    <input type="hidden" name="selectedDrive" th:value="${drive.id}">
+    <br><br>
+
+    <!-- Поле для добавления пользователя -->
+    <label for="userSelect">Пользователь:</label>
+    <select id="userSelect" name="selectedUser">
+        <!-- Опции для выпадающего списка пользователей -->
+        <option th:each="user : ${users}" th:value="${user.id}"
+                th:text="${user.username}"></option>
+    </select>
+<!--    <button type="button" onclick="addUser()">Добавить пользователя</button>-->
+    <br><br>
+
+    <!-- Поле для добавления задачи -->
+    <label for="taskSelect">Задача:</label>
+    <select id="taskSelect" name="selectedTask">
+        <!-- Опции для выпадающего списка задач -->
+        <option th:each="task : ${tasks}" th:value="${task.id}"
+                th:text="${task.cost}"></option>
+    </select>
+<!--    <button type="button" onclick="addTask()">Добавить задачу</button>-->
+    <br><br>
+
+    <!-- Поля для локации -->
+    <label for="startTime">Время начала:</label>
+    <input type="text" id="startTime" name="location.start_time">
+    <br><br>
+
+    <label for="finishTime">Время окончания:</label>
+    <input type="text" id="finishTime" name="location.finish_time">
+    <br><br>
+
+    <label for="startLocation">Место начала:</label>
+    <input type="text" id="startLocation" name="location.start_location">
+    <br><br>
+
+    <label for="finishLocation">Место окончания:</label>
+    <input type="text" id="finishLocation" name="location.finish_location">
+    <br><br>
+
+    <!-- Поле для добавления машины -->
+    <label for="carSelect">Машина:</label>
+    <select id="carSelect" name="selectedAuto">
+        <!-- Опции для выпадающего списка машин -->
+        <option th:each="auto : ${autos}" th:value="${auto.id}"
+                th:text="${auto.color} + ' ' + ${auto.brand}"></option>
+    </select>
+<!--    <button type="button" onclick="addCar()">Добавить машину</button>-->
+    <br><br>
+
+    <button type="submit">Сохранить</button>
+</form>
+</body>
+</html>

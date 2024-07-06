@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Страница добавления локации</title>
+    <meta charset="utf-8">
+    <link href="/css/Login.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://images.wallpaperscraft.ru/image/single/doski_steny_kraska_974371_1920x1080.jpg');
+            background-size: cover; /* Фоновое изображение будет охватывать весь экран */
+            background-position: center; /* Центрируем фоновое изображение */
+            background-repeat: no-repeat; /* Избегаем повторения фонового изображения */
+            background-attachment: fixed; /* Фоновое изображение остается фиксированным при прокрутке */
+        }
+    </style>
+</head>
+<body>
+<h1>Страница добавления локации</h1>
+<form action="/admin/saveLocation" method="post" enctype="application/x-www-form-urlencoded">
+
+    <label for="start_location">Место отъезда</label>
+    <input type="text" id="start_location" name="start_location" required><br>
+
+    <label for="finish_location">Место прибытия</label>
+    <input type="text" id="finish_location" name="finish_location" required><br>
+
+    <label for="start_time">Дата отъезда</label>
+    <input type="text" id="start_time" name="start_time" required><br>
+
+    <label for="finish_time">Дата приезда</label>
+    <input type="text" id="finish_time" name="finish_time" required><br>
+
+    <input type="submit" value="Добавить дату и место командировки">
+
+</form>
+</body>
+</html>
