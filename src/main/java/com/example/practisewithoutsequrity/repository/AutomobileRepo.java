@@ -11,4 +11,5 @@ public interface AutomobileRepo extends JpaRepository<Automobile, Integer> {
     Optional<Automobile> findById(Integer id);
 
     Optional<Automobile> findByColor(String color);
+    Optional<Automobile> findByUser(String user);
 }
