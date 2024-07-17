@@ -19,7 +19,7 @@ public class Drive {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "status")
+    @Column(name = "Status")
     private String status;
 
     @Column(name = "title")
