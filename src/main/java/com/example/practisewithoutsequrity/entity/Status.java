@@ -8,6 +8,11 @@ import javax.persistence.Id;
 public class Status {
 
     private Long id;
+    private Double statusTime;
+    private Double statusTask;
+    
+
+
 
     public void setId(Long id) {
         this.id = id;
