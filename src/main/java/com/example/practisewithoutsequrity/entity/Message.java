@@ -17,21 +17,22 @@ import javax.persistence.Table;
 @ToString
 public class Message {
 
+    @Id
     private Long id;
     private String fromAdmin;
     private String toUser;
     private String message;
-    private Drive drive;
+    private Integer driveId;
     private String answer;
 
     public void takeMessage(String adm,
                             String us,
                             String message,
-                            Drive dr){
+                            Integer drId){
         this.fromAdmin=adm;
         this.toUser=us;
         this.message=message;
-        this.drive=dr;
+        this.driveId=drId;
     }
     public void answerMessage(String answ){
         this.answer=answ;
