@@ -24,6 +24,18 @@ public class Message {
     private Drive drive;
     private String answer;
 
+    public void takeMessage(String adm,
+                            String us,
+                            String message,
+                            Drive dr){
+        this.fromAdmin=adm;
+        this.toUser=us;
+        this.message=message;
+        this.drive=dr;
+    }
+    public void answerMessage(String answ){
+        this.answer=answ;
+    }
 
     public void setId(Long id) {
         this.id = id;
