@@ -16,7 +16,14 @@ import javax.persistence.Table;
 @Table(name = "Task")
 @ToString
 public class Message {
+
     private Long id;
+    private String fromAdmin;
+    private String toUser;
+    private String message;
+    private Drive drive;
+    private String answer;
+
 
     public void setId(Long id) {
         this.id = id;
