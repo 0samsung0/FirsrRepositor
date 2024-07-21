@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 
 @Entity
@@ -25,6 +26,10 @@ public class Status {
 
 
 
+    public Double findPercentTime(Date dateStart, Date dateFinish){
+        Date dateNow = new Date();
+        return (dateFinish.getSeconds()-dateStart.getSeconds())/(dateNow.getSeconds() - dateStart.getSeconds());
+    }
     public void setId(Long id) {
         this.id = id;
     }
