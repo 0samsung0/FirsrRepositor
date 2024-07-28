@@ -58,9 +58,6 @@ public class Automobile {
     @Column(name = "color")
     private String color;
 
-    @Column(name = "count_place")
-    private Integer countPlace;
-
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "drive_id", nullable = true)
     @JsonIgnore
