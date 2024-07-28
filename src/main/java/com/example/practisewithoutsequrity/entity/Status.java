@@ -24,11 +24,20 @@ public class Status {
     private Double statusTask;
 
 
-
-
-    public Double findPercentTime(Date dateStart, Date dateFinish){
+    public Double findPercentTime(Date dateStart, Date dateFinish) {
         Date dateNow = new Date();
-        return (dateFinish.getSeconds()-dateStart.getSeconds())/(dateNow.getSeconds() - dateStart.getSeconds());
+
+        // Вычисляем общую длительность задачи
+        long totalDuration = dateFinish.getTime() - dateStart.getTime();
+
+        // Вычисляем длительность, прошедшую на данный момент
+        long elapsedDuration = dateNow.getTime() - dateStart.getTime();
+
+        // Вычисляем процент завершенности
+        double percentComplete = (double) elapsedDuration / totalDuration * 100;
+
+        // Возвращаем результат
+        return percentComplete;
     }
     public void setId(Long id) {
         this.id = id;
