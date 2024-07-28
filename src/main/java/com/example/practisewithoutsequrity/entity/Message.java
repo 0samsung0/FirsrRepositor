@@ -21,9 +21,9 @@ public class Message {
     private Long id;
     private String fromAdmin;
     private String toUser;
-    private String message;
+    private String message="";
     private Integer driveId;
-    private String answer;
+    private String answer="";
 
     public void takeMessage(String adm,
                             String us,
@@ -42,8 +42,11 @@ public class Message {
         this.id = id;
     }
 
-    @Id
     public Long getId() {
         return id;
     }
+
+    public void addMessageFromUser(String plsMessage){ this.message = message + "\n" + plsMessage; }
+    public void addMessageAdmin(String plsAnswer){ this.answer = answer + "\n" + plsAnswer; }
+
 }

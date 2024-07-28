@@ -46,7 +46,7 @@ public class Status {
         return countCompleteTask/countAllTask * 100;
     }
 
-    
+
 
     public void setId(Long id) {
         this.id = id;
