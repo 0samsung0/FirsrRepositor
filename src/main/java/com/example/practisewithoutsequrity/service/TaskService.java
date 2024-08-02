@@ -24,4 +24,6 @@ public class TaskService {
         return taskRepo.findAll();
     }
 
+    public List<Task> findBySort{}
+
 }
