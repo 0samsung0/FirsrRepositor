@@ -1,0 +1,156 @@
+.headerH1{
+    background-color: red;
+    color: aliceblue;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: -8px;  
+    width: 100%;
+    background-attachment: fixed;
+    position: fixed;
+    margin-top: -8px;
+    z-index: 99;
+    display:block;
+    a{
+        color: aliceblue;
+        text-decoration: none;
+    }
+}
+.headerH1:hover{
+    background-color: rgb(236, 111, 111);
+    a{
+        color: black;
+        
+    }
+}
+.headerone{
+
+    width: 100%;
+}
+.error{
+    margin-left: 30%;
+    margin-right: 30%;
+}
+.search_panel{
+    padding-top: 25px;
+    text-align: center;
+    padding-top: 40px;
+}
+.adidas img {
+    width: 77px;
+    height: 33px;
+    object-fit: contain;
+    padding-bottom: px;
+}
+.reebok img{
+    width: 77px;
+    height: 43px;
+    object-fit: contain;
+}
+.verticalAlign{
+    width: 210px;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    display: table-cell;
+    margin-top: 20px;
+
+    a{
+        text-decoration: none;
+        color:black;
+    }
+}
+.search-container {
+    container: flex;
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    unicode-bidi: isolate;
+    
+}
+.search-input {
+    padding: 4px 0px 0px 0px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    font-size: 16px;
+}
+.search-button {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    
+    padding: 18px 24px 4px 0px;
+    border-radius: 0 4px 4px 0;
+    
+    margin-left: -5px;
+    background-image: url(https://w7.pngwing.com/pngs/608/913/png-transparent-computer-icons-google-search-symbol-mobile-search-search-for-miscellaneous-logo-mobile-phones-thumbnail.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-size: 20px 20px;
+
+} 
+.search-icon {
+    width: 20px;
+    height: 24px;
+}
+
+
+
+
+
+
+
+
+
+.buttonPush{
+    width: 100%;
+    height: 25px;
+    background-color: rgb(0, 0, 0);
+    border: 3px solid;
+    margin-top: 10px;
+    padding-right: 10px;
+    margin-left:-8px;
+}
+.buttons{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.error{
+    margin-left: -10px;
+    padding-right: 90px;
+    img{
+        width: 1905px;
+        height: 1000px;
+    }
+}
