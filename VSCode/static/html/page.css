@@ -115,11 +115,41 @@
     margin-left:-8px;
 }
 .buttons{
-
+    width: 40%;
+    margin-left: 30%;
+    z-index: 3;
 }
-
-
-
+.lineButtons{
+    display: inline;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+}
+.upList:hover > .dropdown-content{
+    display: inline-block;
+    border: 2px solid brown;
+    margin: 25px 20px 0 0;
+    background-color: rgb(214, 196, 156);
+    z-index: 999999;
+}
+.MenButton{
+    padding-top: 8px;
+    margin-right: -5px;
+    border: none;
+    background-color: black;
+    color: antiquewhite;
+}
+.MenButton:hover{
+    padding-top: 8px;
+    margin-right: -5px;
+    border: none;
+    background-color: white;
+    color: black;
+}
+.inlineUl{
+    display: inline-block;
+}
 
 
 
@@ -153,4 +183,6 @@
         width: 1905px;
         height: 1000px;
     }
+    
 }
+
